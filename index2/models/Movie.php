@@ -2,11 +2,13 @@
 
 class Movie{
     protected $title;
-    protected $subtitle;
-    protected $overview;
     protected $categories = [];
     protected $posterPath;
-    protected static $baseUri = 'https://image.tmdb.org/t/p/w342';
+    protected $overview;
+
+
+    //statics
+    protected static $baseUri = 'https://image.tmdb.org/t/p/w780';
     protected static $count = 0;
 
     /**
@@ -14,13 +16,12 @@ class Movie{
      *
      * @param string $_title
      * @param Array $_categories
-     * @param string $_duration
-     * @param string $_subtitle
+     * @param string $_posterPath this is the relative path to the image; use getImgPath to get the poster
+     * @param string $_overview
      */
-    public function __construct($_title, $_categories, $_posterPath , $_subtitle = '', $_overview = '')
+    public function __construct($_title, $_categories, $_posterPath , $_overview = '')
     {
         $this->title = $_title;
-        $this->subtitle = $_subtitle;
         $this->overview = $_overview;
         $this->categories = $_categories;
         $this->posterPath = $_posterPath;
@@ -34,15 +35,6 @@ class Movie{
      */
     public function getTitle(){
         return $this->title;
-    }
-
-    /**
-     * call this function to get the subtitle of the movie
-     *
-     * @return string the subtitle of the movie
-     */
-    public function getSubtitle(){
-        return $this->subtitle;
     }
 
     /**

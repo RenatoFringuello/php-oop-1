@@ -1,4 +1,14 @@
 .film-container{
     height: 100vh;
-    max-height: 700px;
+    max-height: 650px;
+}
+.film-container img{
+    object-position:top;
+}
+
+
+@media screen and (max-width : 768px) {
+    .film-container img{
+        height: 90%;
+    }
 }
