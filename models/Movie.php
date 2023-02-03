@@ -3,8 +3,9 @@
 class Movie{
     protected $title;
     protected $subtitle;
-    protected $categories = [];
     protected $duration;
+    protected $categories = [];
+    protected static $count = 0;
 
     /**
      * this constructor create a instance of a movie
@@ -14,12 +15,13 @@ class Movie{
      * @param string $_duration
      * @param string $_subtitle
      */
-    public function __construct($_title, $_categories, $_duration , $_subtitle = '')
+    public function __construct($_title, $_categories, $_duration, $_subtitle = '')
     {
         $this->title = $_title;
         $this->subtitle = $_subtitle;
-        $this->categories = $_categories;
         $this->duration = $_duration;
+        $this->categories = $_categories;
+        self::$count ++;
     }
 
     /**
@@ -38,6 +40,24 @@ class Movie{
      */
     public function getSubtitle(){
         return $this->subtitle;
+    }
+
+    /**
+     * call this function to get the overview of the movie
+     *
+     * @return string the overview of the movie
+     */
+    public function getDuration(){
+        return ($this->duration !== '') ? $this->duration : 'not available';
+    }
+
+    /**
+     * call this function to get the count of the movies
+     *
+     * @return string the count of the movies
+     */
+    public static function getCount(){
+        return self::$count;
     }
 
     /**
@@ -61,15 +81,6 @@ class Movie{
         foreach ($this->categories as $key => $category) {
             $str .= ($key < count($this->categories)-1) ? $category . $dividerString : $category;
         }
-        return $str;
-    }
-
-    /**
-     * call this function to get the duration of the movie
-     *
-     * @return string the duration of the movie
-     */
-    public function getDuration(){
-        return $this->duration;
+        return ($str == $dividerString)? 'not available' : $str;
     }
 }

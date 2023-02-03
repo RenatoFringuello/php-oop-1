@@ -21,7 +21,7 @@
 </head>
 <body class="bg-dark">
     <div class="container-lg">
-        <h1 class="text-center text-white p-4">Movies</h1>
+        <h1 class="text-center text-white p-4">Movies<?php echo " (".Movie::getCount().")";?></h1>
         <div class="row g-4">
 
             <?php
